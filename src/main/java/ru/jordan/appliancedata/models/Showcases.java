@@ -1,10 +1,12 @@
 package ru.jordan.appliancedata.models;
 
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Showcases")
@@ -15,10 +17,10 @@ public class Showcases {
     private Long id;
 
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="address")
+    @Column(name = "address")
     private String Adress;
 
     @Column(name = "type")
@@ -33,6 +35,19 @@ public class Showcases {
     @Temporal(TemporalType.TIMESTAMP)
     private Date datechange;
 
+
+    @OneToMany(mappedBy = "showcases_id")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private List<Product> products;
+
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public Showcases() {
     }

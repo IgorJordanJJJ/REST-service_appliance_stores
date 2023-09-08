@@ -1,6 +1,7 @@
 package ru.jordan.appliancedata.models;
 
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -17,9 +18,10 @@ public class Product {
     private int uuid;
 
 
-    @Min(value = 1, message = "Price should be greater than 1")
-    @Column(name = "showcases_id")
-    private int showcases_id;
+    @ManyToOne
+    @JoinColumn(name = "showcases_id", referencedColumnName = "id")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private Showcases showcases_id;
 
 
     @Min(value = 1, message = "Price should be greater than 1")
@@ -71,14 +73,6 @@ public class Product {
         this.uuid = uuid;
     }
 
-    public int getShowcases_id() {
-        return showcases_id;
-    }
-
-    public void setShowcases_id(int showcases_id) {
-        this.showcases_id = showcases_id;
-    }
-
     public int getPosition() {
         return position;
     }
@@ -125,5 +119,13 @@ public class Product {
 
     public void setDatechange(Date datechange) {
         this.datechange = datechange;
+    }
+
+    public Showcases getShowcases_id() {
+        return showcases_id;
+    }
+
+    public void setShowcases_id(Showcases showcases_id) {
+        this.showcases_id = showcases_id;
     }
 }
