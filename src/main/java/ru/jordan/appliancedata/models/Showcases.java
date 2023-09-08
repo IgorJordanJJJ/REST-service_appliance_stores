@@ -14,7 +14,7 @@ public class Showcases {
     @Id
     @Column(name = "uuid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
 
     @Column(name = "name")
@@ -52,7 +52,7 @@ public class Showcases {
     public Showcases() {
     }
 
-    public Showcases(Long id) {
+    public Showcases(int id) {
         this.id = id;
     }
 
@@ -96,13 +96,11 @@ public class Showcases {
         this.name = name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-
+    public void setId(int id) {
+        this.id = id;
+    }
 }
