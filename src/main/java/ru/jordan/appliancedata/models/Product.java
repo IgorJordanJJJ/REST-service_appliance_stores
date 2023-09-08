@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -34,11 +35,11 @@ public class Product {
 
     @Column(name = "type")
     @Size(min = 1, max = 30, message = "Name should be between 1 and 30 characters")
-    private String Type;
+    private String type;
 
     @Column(name = "price")
     @Min(value = 1, message = "Price should be greater than 1")
-    private int price;
+    private BigDecimal price;
 
     @Column(name = "datecreate")
     @Temporal(TemporalType.DATE)
@@ -90,18 +91,18 @@ public class Product {
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        type = type;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

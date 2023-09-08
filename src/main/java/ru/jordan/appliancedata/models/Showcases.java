@@ -21,10 +21,10 @@ public class Showcases {
     private String name;
 
     @Column(name = "address")
-    private String Adress;
+    private String address;
 
     @Column(name = "type")
-    private String Type;
+    private String type;
 
     @Column(name = "datecreate")
     @Temporal(TemporalType.DATE)
@@ -56,20 +56,20 @@ public class Showcases {
         this.id = id;
     }
 
-    public String getAdress() {
-        return Adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        Adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        type = type;
     }
 
     public Date getDatecreate() {
