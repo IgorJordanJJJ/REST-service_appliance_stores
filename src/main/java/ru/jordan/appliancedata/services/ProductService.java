@@ -42,9 +42,13 @@ public class ProductService {
 
     @Transactional
     public void update(int uuid, Product product) {
-        product.setId(uuid);
-        product.setDatechange(new Timestamp(System.currentTimeMillis()));
-        productRepository.save(product);
+        Product product1 = productRepository.findById(uuid).orElse(null);
+        if(product1 !=null){
+            product.setId(uuid);
+            product.setDatecreate(product1.getDatecreate());
+            product.setDatechange(new Timestamp(System.currentTimeMillis()));
+            productRepository.save(product);
+        }
     }
 
 

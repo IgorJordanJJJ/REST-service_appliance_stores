@@ -50,9 +50,13 @@ public class ShowcaseService {
 
     @Transactional
     public void update(int uuid, Showcases showcases) {
-        showcases.setId(uuid);
-        showcases.setDatechange(new Timestamp(System.currentTimeMillis()));
-        showcasesRepository.save(showcases);
+        Showcases showcases1 = showcasesRepository.findById(uuid).orElse(null);
+        if(showcases1 != null){
+            showcases.setUuid(uuid);
+            showcases.setDatecreate(showcases1.getDatecreate());
+            showcases.setDatechange(new Timestamp(System.currentTimeMillis()));
+            showcasesRepository.save(showcases);
+        }
     }
 
 
