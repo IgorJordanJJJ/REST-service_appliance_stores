@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Product")
@@ -20,9 +21,9 @@ public class Product {
 
 
     @ManyToOne
-    @JoinColumn(name = "showcases_id", referencedColumnName = "id")
+    @JoinColumn(name = "showcases_id", referencedColumnName = "uuid")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private Showcases showcases_id;
+    private Showcases showcases;
 
 
     @Min(value = 1, message = "Price should be greater than 1")
@@ -95,7 +96,7 @@ public class Product {
     }
 
     public void setType(String type) {
-        type = type;
+        this.type = type;
     }
 
     public BigDecimal getPrice() {
@@ -122,11 +123,11 @@ public class Product {
         this.datechange = datechange;
     }
 
-    public Showcases getShowcases_id() {
-        return showcases_id;
+    public Showcases getShowcases() {
+        return showcases;
     }
 
-    public void setShowcases_id(Showcases showcases_id) {
-        this.showcases_id = showcases_id;
+    public void setShowcases(Showcases showcases) {
+        this.showcases = showcases;
     }
 }

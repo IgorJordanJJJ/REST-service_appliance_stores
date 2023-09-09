@@ -14,7 +14,7 @@ public class Showcases {
     @Id
     @Column(name = "uuid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int uuid;
 
 
     @Column(name = "name")
@@ -36,24 +36,11 @@ public class Showcases {
     private Date datechange;
 
 
-    @OneToMany(mappedBy = "showcases_id")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private List<Product> products;
-
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
     public Showcases() {
     }
 
-    public Showcases(int id) {
-        this.id = id;
+    public Showcases(int uuid) {
+        this.uuid = uuid;
     }
 
     public String getAddress() {
@@ -69,7 +56,7 @@ public class Showcases {
     }
 
     public void setType(String type) {
-        type = type;
+        this.type = type;
     }
 
     public Date getDatecreate() {
@@ -77,7 +64,7 @@ public class Showcases {
     }
 
     public void setDatecreate(Date datecreate) {
-        datecreate = datecreate;
+        this.datecreate = datecreate;
     }
 
     public Date getDatechange() {
@@ -85,7 +72,7 @@ public class Showcases {
     }
 
     public void setDatechange(Date datechange) {
-        datechange = datechange;
+        this.datechange = datechange;
     }
 
     public String getName() {
@@ -96,11 +83,12 @@ public class Showcases {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+
+    public int getUuid() {
+        return uuid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUuid(int uuid) {
+        this.uuid = uuid;
     }
 }
