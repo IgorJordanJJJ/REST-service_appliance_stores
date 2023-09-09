@@ -1,0 +1,3 @@
+DELETE FROM Product;
+
+GO
