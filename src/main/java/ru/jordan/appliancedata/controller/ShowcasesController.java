@@ -7,6 +7,8 @@ import ru.jordan.appliancedata.models.Showcases;
 import ru.jordan.appliancedata.services.ShowcaseService;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -39,18 +41,24 @@ public class ShowcasesController {
 
     @GetMapping("/createdDateRange")
     public List<Showcases> getStoresByCreatedDateRange(
-            @RequestParam Date startDate,
-            @RequestParam Date endDate
-    ) {
-        return showcaseService.getStoresByDatecreateRange(startDate, endDate);
+            @RequestParam String startDate,
+            @RequestParam String endDate
+    ) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate1 = dateFormat.parse(startDate);
+        Date endDate1 = dateFormat.parse(endDate);
+
+        return showcaseService.getStoresByDatecreateRange(startDate1, endDate1);
     }
 
     @GetMapping("/lastUpdatedRange")
     public List<Showcases> getStoresByLastUpdatedRange(
-            @RequestParam Timestamp startDate,
-            @RequestParam Timestamp endDate
+            @RequestParam String startDate,
+            @RequestParam String endDate
     ) {
-        return showcaseService.getStoresByLastUpdatedRange(startDate, endDate);
+        Timestamp startDate1 = Timestamp.valueOf(startDate);
+        Timestamp endDate1 = Timestamp.valueOf(endDate);
+        return showcaseService.getStoresByLastUpdatedRange(startDate1, endDate1);
     }
 
     @PostMapping()
