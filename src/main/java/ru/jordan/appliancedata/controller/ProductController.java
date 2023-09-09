@@ -41,11 +41,11 @@ public class ProductController {
     @GetMapping("/showcases/{storeId}")
     public List<Product> getProductsByStore(@PathVariable int storeId) {
         Showcases showcases = new Showcases();
-        showcases.setId(storeId);
+        showcases.setUuid(storeId);
         return productService.getProductsByShowcases(showcases);
     }
 
-    @PostMapping
+    @PostMapping()
     public void addProduct(@RequestBody Product product) {
         productService.save(product);
     }

@@ -53,7 +53,7 @@ public class ShowcasesController {
         return showcaseService.getStoresByLastUpdatedRange(startDate, endDate);
     }
 
-    @PostMapping
+    @PostMapping()
     public void addStore(@RequestBody Showcases showcases) {
         showcaseService.save(showcases);
     }
